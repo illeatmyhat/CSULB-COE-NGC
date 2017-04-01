@@ -87,3 +87,7 @@ ENV/
 
 # Rope project settings
 .ropeproject
+caffetest/Positive/
+caffetest/Negative/
+Training/Positive/
+Training/Negative/

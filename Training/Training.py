@@ -27,8 +27,7 @@ negativeCount = 100
 # Time:  O(m) where m is the sample size if it is large. If the sample size is small, then it simply
 # tries again if it selects a repeat. In other words, non-deterministic when at a manageable scale.
 # Space: O(m) where m is min(population size, size(hashset(sample size))).
-# Notes: It's difficult to add to already existing datasets. The number of iterations wasted turn out
-# to not significantly affect performance given our small number of parameters. Python's implementation
+# Notes: It's difficult to add to already existing datasets. Python's implementation
 # branches based on population size versus sample size. If the maximum size of the hashset used to store samples
 # would be larger than the population size, then we make a copy of the population and remove elements from it.
 # Interestingly, they state that using a range() generator function as an input is more space efficient, but this
@@ -43,7 +42,9 @@ negativeCount = 100
 # of unique random numbers. However, actually implementing these cipher functions is extremely complicated--we avoid
 # this for the same reason we use Binary and Binomial Heap instead of Fibonacci Heap. An additional complication is that
 # we can generate numbers outside of the range of the population size. We simply ignore these numbers and try again.
-# The maximum number of these ``collisions'' is 2^n - size(population), though this says nothing about the probability.
+# The maximum number of these ``collisions'' is 2^n - size(population). In the worst case, the number of collisions
+# is approximately equal to the size of the population, which means that on average, it will take only twice as long to
+# generate all numbers in the population in the worst case.
 #  A strong advantage of this technique means it is very easy to add to an existing dataset. You simply store the
 # seed and offset (or key and counter/IV) and continue from where you left off. It has a glaring lack of randomness
 # when n is small, but this shouldn't matter, because when generating a dataset for a neural network,

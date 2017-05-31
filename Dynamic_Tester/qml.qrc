@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Designer.qml</file>
+        <file>SelectionForm.ui.qml</file>
+        <file>Selection.qml</file>
+    </qresource>
+</RCC>

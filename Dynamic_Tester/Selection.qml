@@ -1,4 +1,5 @@
 import QtQuick 2.5
+
 SelectionForm {
     property int resolution: 256
     property var selected: ({})

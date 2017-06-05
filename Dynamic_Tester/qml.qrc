@@ -1,8 +1,12 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>MainForm.ui.qml</file>
         <file>Designer.qml</file>
+        <file>DesignerForm.ui.qml</file>
         <file>SelectionForm.ui.qml</file>
         <file>Selection.qml</file>
+        <file>Constraints.qml</file>
+        <file>ConstraintsForm.ui.qml</file>
     </qresource>
 </RCC>

@@ -8,68 +8,26 @@ ApplicationWindow {
     minimumWidth: 820
     minimumHeight: 400
     title: qsTr("Dynamic Tester")
-    header: ToolBar {
-        GridLayout{
-            anchors.fill: parent
-            columns: 4
-            ToolButton {
-                text: qsTr("Exit")
-                onClicked: Qt.quit();
-            }
+    MainForm {
+        anchors.fill: parent
+        exitButton.onClicked: Qt.quit();
+        newSquareButton.onClicked: {
+            designer.constraints.shapesModel.append
+            ({
+                 shape: "square",
+                 r: 255,
+                 g: 0,
+                 b: 0,
+                 sx: 128,
+                 sy: 128,
+                 theta: 0,
+                 size: 5
+            });
 
-            Item {
-                Layout.fillWidth: true
-            }
-
-            ToolButton {
-                id: newSquareButton
-                text: qsTr("Add New Square")
-                onClicked: designer.addShape()
-            }
-
-            ToolButton {
-                id: reclassifyButton
-                text: qsTr("Reclassify")
-            }
+            var newSquare = designer.constraints.shapesModel.get(designer.constraints.shapesModel.count - 1);
+            designer.selection.selected = newSquare;
+            designer.selection.updateSelected();
+            designer.canvas.requestPaint();
         }
-
-
-    }
-    footer: Rectangle {
-        height: childrenRect.height
-        color: Material.primary
-        GridLayout {
-                id: grid
-                width: parent.width
-                Text {
-                    id: statusLabel
-                    text: qsTr("Reclassifying Image...")
-                    color: "white"
-                }
-
-                Item {
-                    Layout.fillWidth: true
-                }
-
-                Text {
-                    text: qsTr("Most Recent Classification:")
-                    color: "white"
-                }
-
-                Text {
-                    id: classificationLabel
-                    text: qsTr("Positive")
-                    Layout.minimumWidth: 50
-                    color: "white"
-                }
-        }
-    }
-
-    Designer {
-        id: designer
-        anchors.top: header.bottom
-        anchors.bottom: footer.top
-        anchors.left: parent.left
-        anchors.right: parent.right
     }
 }

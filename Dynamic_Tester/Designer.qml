@@ -15,7 +15,6 @@ Item {
             shapesView {
                 onCurrentIndexChanged: {
                     selection.selected = constraints.shapesModel.get(constraints.shapesView.currentIndex);
-                    selection.updateSelected();
                 }
             }
         }
@@ -36,5 +35,7 @@ Item {
                 }
             }
         }
+
+        selection.onPropertiesChanged: canvas.requestPaint()
     }
 }

@@ -2,65 +2,65 @@ import QtQuick 2.5
 
 SelectionForm {
     property int resolution: 256
-    property var selected: ({})
-    property var updateSelected: (function() {
-        rSpinBox.value = selected.r
-        gSpinBox.value = selected.g
-        bSpinBox.value = selected.b
-        xSpinBox.value = selected.sx
-        ySpinBox.value = selected.sy
-        thetaSpinBox.value = selected.theta
-        sizeSpinBox.value = selected.size
-        visible = true
-    })
-    property var onValueChanged: (function() {})
-    visible: true
+    property var selected
+    signal propertiesChanged
+
     xSpinBox.to: resolution - 1
     ySpinBox.to: resolution - 1
     sizeSpinBox.to: resolution - 1
 
-    xSpinBox.onValueChanged: {
-        selected.sx = xSpinBox.value
-        onValueChanged()
+    onSelectedChanged: {
+        sx = selected.sx;
+        sy = selected.sy;
+        theta = selected.theta;
+        size = selected.size;
+        r = selected.r;
+        g = selected.g;
+        b = selected.b;
     }
-    ySpinBox.onValueChanged: {
-        selected.sy = ySpinBox.value
-        onValueChanged()
+
+    onSxChanged: {
+        xSpinBox.value = sx;
+        selected.sx = sx;
+        propertiesChanged();
     }
-    thetaSpinBox.onValueChanged: {
-        selected.theta = thetaSpinBox.value
-        onValueChanged()
+
+    onSyChanged: {
+        ySpinBox.value = sy;
+        selected.sy = sy;
+        propertiesChanged();
     }
-    sizeSpinBox.onValueChanged: {
-        selected.size = sizeSpinBox.value
-        onValueChanged()
+
+    onThetaChanged: {
+        thetaSpinBox.value = theta;
+        selected.theta = theta;
+        propertiesChanged();
     }
-    rSpinBox.onValueChanged: {
-        selected.r = rSpinBox.value
-        rSlider.value = selected.r
-        onValueChanged()
+
+    onSizeChanged: {
+        sizeSpinBox.value = size;
+        selected.size = size;
+        propertiesChanged();
     }
-    rSlider.onValueChanged: {
-        selected.r = parseInt(rSlider.value)
-        rSpinBox.value = selected.r
-        onValueChanged()
+
+    onRChanged: {
+        rSpinBox.value = r;
+        rSlider.value = r;
+        selected.r = r;
+        propertiesChanged();
     }
-    gSpinBox.onValueChanged: {
-        selected.g = gSpinBox.value
-        gSlider.value = selected.g
+
+    onGChanged: {
+        gSpinBox.value = g;
+        gSlider.value = g;
+        selected.g = g;
+        propertiesChanged();
     }
-    gSlider.onValueChanged: {
-        selected.g = parseInt(gSlider.value)
-        gSpinBox.value = selected.g
-        onValueChanged()
-    }
-    bSpinBox.onValueChanged: {
-        selected.b = bSpinBox.value
-        bSlider.value = selected.b
-    }
-    bSlider.onValueChanged: {
-        selected.b = parseInt(bSlider.value)
-        bSpinBox.value = selected.b
-        onValueChanged()
+
+    onBChanged: {
+        bSpinBox.value = b;
+        bSlider.value = b;
+        selected.b = b;
+        propertiesChanged();
     }
 }

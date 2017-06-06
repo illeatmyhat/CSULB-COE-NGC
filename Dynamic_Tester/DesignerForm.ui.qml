@@ -42,7 +42,6 @@ Item {
         Selection {
             id: selection
             Layout.margins: 10
-            onValueChanged: canvas.requestPaint
         }
     }
 }

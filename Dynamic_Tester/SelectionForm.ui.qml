@@ -5,6 +5,14 @@ import QtQuick.Layouts 1.1
 Item {
     Layout.minimumWidth: 300
     height: childrenRect.height
+    property int r: 0
+    property int g: 0
+    property int b: 0
+    property int sx: 0
+    property int sy: 0
+    property int theta: 0
+    property int size: 0
+
     property alias xSpinBox: xSpinBox
     property alias ySpinBox: ySpinBox
     property alias thetaSpinBox: thetaSpinBox
@@ -33,6 +41,8 @@ Item {
             id: xSpinBox
             to: 25
             editable: true
+            value: sx
+            onValueChanged: sx = value
             Layout.maximumWidth: 300
             Layout.fillWidth: true
         }
@@ -50,6 +60,8 @@ Item {
         SpinBox {
             id: ySpinBox
             editable: true
+            value: sy
+            onValueChanged: sy = value
             Layout.maximumWidth: 300
             Layout.fillWidth: true
         }
@@ -65,6 +77,8 @@ Item {
         SpinBox {
             id: thetaSpinBox
             editable: true
+            value: theta
+            onValueChanged: theta = value
             to: 359
             Layout.maximumWidth: 300
             Layout.fillWidth: true
@@ -83,6 +97,8 @@ Item {
         SpinBox {
             id: sizeSpinBox
             editable: true
+            value: size
+            onValueChanged: size = value
             Layout.maximumWidth: 300
             Layout.fillWidth: true
         }
@@ -94,16 +110,20 @@ Item {
 
         Slider {
             id: rSlider
-            value: 0
+            value: r
+            onValueChanged: r = value
             to: 255
             stepSize: 1.0
             Layout.columnSpan: 3
             Layout.fillWidth: true
         }
+
         SpinBox {
             id: rSpinBox
             to: 255
             editable: true
+            value: r
+            onValueChanged: r = value
             Layout.maximumWidth: 300
             Layout.fillWidth: true
         }
@@ -115,7 +135,8 @@ Item {
 
         Slider {
             id: gSlider
-            value: 0
+            value: g
+            onValueChanged: g = value
             to: 255
             stepSize: 1.0
             Layout.columnSpan: 3
@@ -125,6 +146,8 @@ Item {
             id: gSpinBox
             to: 255
             editable: true
+            value: g
+            onValueChanged: g = value
             Layout.maximumWidth: 300
             Layout.fillWidth: true
         }
@@ -135,7 +158,8 @@ Item {
 
         Slider {
             id: bSlider
-            value: 0
+            value: b
+            onValueChanged: b = value
             to: 255
             stepSize: 1.0
             Layout.columnSpan: 3
@@ -145,6 +169,8 @@ Item {
             id: bSpinBox
             to: 255
             editable: true
+            value: b
+            onValueChanged: b = value
             Layout.maximumWidth: 300
             Layout.fillWidth: true
         }

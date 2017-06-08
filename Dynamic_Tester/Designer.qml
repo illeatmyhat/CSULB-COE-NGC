@@ -10,11 +10,16 @@ Item {
     DesignerForm {
         id: ctx
         anchors.fill: parent
-
         constraints {
             shapesView {
-                onCurrentIndexChanged: {
+                onCurrentItemChanged: {
                     selection.selected = constraints.shapesModel.get(constraints.shapesView.currentIndex);
+                }
+            }
+            shapesModel {
+                onCountChanged: {
+                    selection.visible = constraints.shapesModel.count != 0;
+                    canvas.requestPaint();
                 }
             }
         }

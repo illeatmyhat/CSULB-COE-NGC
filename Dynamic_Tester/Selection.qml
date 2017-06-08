@@ -10,13 +10,15 @@ SelectionForm {
     sizeSpinBox.to: resolution - 1
 
     onSelectedChanged: {
-        sx = selected.sx;
-        sy = selected.sy;
-        theta = selected.theta;
-        size = selected.size;
-        r = selected.r;
-        g = selected.g;
-        b = selected.b;
+        if(selected !== null) {
+            sx = selected.sx;
+            sy = selected.sy;
+            theta = selected.theta;
+            size = selected.size;
+            r = selected.r;
+            g = selected.g;
+            b = selected.b;
+        }
     }
 
     onSxChanged: {

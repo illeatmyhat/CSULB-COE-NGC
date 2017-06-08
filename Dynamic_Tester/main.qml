@@ -26,8 +26,8 @@ ApplicationWindow {
 
             var newSquare = designer.constraints.shapesModel.get(designer.constraints.shapesModel.count - 1);
             designer.selection.selected = newSquare;
-            designer.selection.updateSelected();
             designer.canvas.requestPaint();
         }
+
     }
 }

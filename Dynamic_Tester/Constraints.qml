@@ -15,6 +15,25 @@ Item {
                     anchors.right: parent.right
                     height: childrenRect.height
                     onClicked: shapesView.currentIndex = index
+                    Button {
+                        id: shapeDelete
+                        anchors.top: parent.top
+                        anchors.right: parent.right
+                        anchors.topMargin: 10
+                        anchors.rightMargin: 5
+                        width: childrenRect.width
+                        height: 20
+                        Text {
+                            text: " X "
+                        }
+                        MouseArea {
+                            onClicked: {
+                                shapesModel.remove(index);
+                            }
+                            anchors.fill: parent
+                            hoverEnabled: true
+                        }
+                    }
                     ColumnLayout {
                         Row {
                             Layout.topMargin: 7.5
@@ -23,22 +42,6 @@ Item {
                             spacing: 145
                             Text {
                                 text: shape
-                            }
-                            Button {
-                                id: shapeDelete
-                                width: rectChild.width
-                                height: 20
-                                Text {
-                                    id: rectChild
-                                    text: " X "
-                                }
-                                MouseArea {
-                                    onClicked: {
-                                        shapesModel.remove(index);
-                                    }
-                                    anchors.fill: parent
-                                    hoverEnabled: true
-                                }
                             }
                         }
                         Row {

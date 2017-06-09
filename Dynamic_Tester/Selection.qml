@@ -7,13 +7,13 @@ SelectionForm {
 
     onSelectedChanged: {
         if(selected !== null) {
-            sx = Qt.binding(function(){ return selected.sx; });
-            sy = Qt.binding(function(){ return selected.sy; });
-            theta = Qt.binding(function(){ return selected.theta; });
-            size = Qt.binding(function(){ return selected.size; });
-            r = Qt.binding(function(){ return selected.r; });
-            g = Qt.binding(function(){ return selected.g; });
-            b = Qt.binding(function(){ return selected.b; });
+            sx = selected.sx;
+            sy = selected.sy;
+            theta = selected.theta;
+            size = selected.size;
+            r = selected.r;
+            g = selected.g;
+            b = selected.b;
         }
     }
 

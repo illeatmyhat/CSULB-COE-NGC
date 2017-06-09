@@ -12,7 +12,7 @@ ApplicationWindow {
         anchors.fill: parent
         exitButton.onClicked: Qt.quit();
         newSquareButton.onClicked: {
-            designer.constraints.shapesModel.append
+            constraints.shapesModel.append
             ({
                  shape: "square",
                  r: 255,
@@ -24,10 +24,42 @@ ApplicationWindow {
                  size: 5
             });
 
-            var newSquare = designer.constraints.shapesModel.get(designer.constraints.shapesModel.count - 1);
-            designer.selection.selected = newSquare;
-            designer.canvas.requestPaint();
+            constraints.shapesView.currentIndex = constraints.shapesModel.count - 1;
+            canvas.requestPaint();
         }
 
+        canvasResolution: 256
+        canvasBackgroundColor: Material.color(Material.Grey);
+        constraints {
+            shapesView {
+                onCurrentItemChanged: {
+                    selection.selected = constraints.shapesModel.get(constraints.shapesView.currentIndex);
+                }
+            }
+            shapesModel {
+                onCountChanged: {
+                    selection.visible = constraints.shapesModel.count != 0;
+                    canvas.requestPaint();
+                }
+            }
+        }
+
+        canvas {
+            onPaint: {
+                var ctx = canvas.getContext("2d");
+                ctx.reset();
+                ctx.fillStyle = "white";
+                ctx.fillRect(0, 0, width, height);
+                for(var i = 0; i < constraints.shapesModel.count; i++) {
+                    var item = constraints.shapesModel.get(i);
+                    ctx.fillStyle = "rgb(" + item.r + "," + item.g + "," + item.b +")";
+                    var ux = item.sx - item.size;
+                    var uy = item.sy - item.size;
+                    ctx.fillRect(ux, uy, 1 + item.size * 2, 1 + item.size * 2);
+                }
+            }
+        }
+
+        selection.onPropertiesChanged: canvas.requestPaint()
     }
 }

@@ -1,19 +1,29 @@
 import QtQuick 2.5
-import QtQuick.Controls 2.1
+import QtQuick.Controls 1.4 as Desktop
+import QtQuick.Controls 2.1 as Mobile
 import QtQuick.Controls.Material 2.1
 import QtQuick.Layouts 1.1
 
-Page {
+Mobile.Page {
     property alias exitButton: exitButton
     property alias newSquareButton: newSquareButton
     property alias classifyButton: classifyButton
     property alias retrainButton: retrainButton
-    property alias designer: designer
-    header: ToolBar {
+
+    property string canvasBackgroundColor
+    property int   canvasResolution
+    property alias constraints: constraints
+    property alias canvas: canvas
+    property alias selection: selection
+
+    Layout.minimumHeight: 400
+    Layout.minimumWidth: 850
+
+    header: Mobile.ToolBar {
         GridLayout{
             anchors.fill: parent
             columns: 5
-            ToolButton {
+            Mobile.ToolButton {
                 id: exitButton
                 text: qsTr("Exit")
             }
@@ -22,17 +32,17 @@ Page {
                 Layout.fillWidth: true
             }
 
-            ToolButton {
+            Mobile.ToolButton {
                 id: newSquareButton
                 text: qsTr("Add New Square")
             }
 
-            ToolButton {
+            Mobile.ToolButton {
                 id: classifyButton
                 text: qsTr("Classify")
             }
 
-            ToolButton {
+            Mobile.ToolButton {
                 id: retrainButton
                 text: qsTr("Retrain")
             }
@@ -70,8 +80,36 @@ Page {
         }
     }
 
-    Designer {
-        id: designer
-        anchors.fill: parent
+    Desktop.SplitView {
+        width: parent.width
+        height: parent.height
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+
+        Constraints {
+            id: constraints
+            Layout.minimumWidth: 200
+            Layout.margins: 10
+        }
+
+        Rectangle {
+            Layout.margins: 1
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.minimumHeight: 266
+            Layout.minimumWidth: 266
+            color: canvasBackgroundColor
+            Canvas {
+                id: canvas
+                width: canvasResolution
+                height: canvasResolution
+                anchors.centerIn: parent
+            }
+        }
+
+        Selection {
+            id: selection
+            Layout.margins: 10
+        }
     }
 }

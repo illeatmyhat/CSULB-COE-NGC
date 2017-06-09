@@ -16,7 +16,7 @@ Item {
                     anchors.right: parent.right
                     height: childrenRect.height
                     onClicked: shapesView.currentIndex = index
-                    Material.background: index == shapesView.currentIndex ? Material.BlueGrey : parent.Material.background
+                    Material.background: ListView.isCurrentItem ? Material.BlueGrey : parent.Material.background
                     Rectangle {
                         anchors.centerIn: parent
                         width: parent.width

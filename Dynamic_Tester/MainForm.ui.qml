@@ -13,7 +13,7 @@ Mobile.Page {
     property string canvasBackgroundColor
     property int   canvasResolution
     property alias constraints: constraints
-    property alias canvas: canvas
+    property alias designer: designer
     property alias selection: selection
 
     Layout.minimumHeight: 400
@@ -92,19 +92,8 @@ Mobile.Page {
             Layout.margins: 10
         }
 
-        Rectangle {
-            Layout.margins: 1
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            Layout.minimumHeight: 266
-            Layout.minimumWidth: 266
-            color: canvasBackgroundColor
-            Canvas {
-                id: canvas
-                width: canvasResolution
-                height: canvasResolution
-                anchors.centerIn: parent
-            }
+        Designer {
+            id: designer
         }
 
         Selection {

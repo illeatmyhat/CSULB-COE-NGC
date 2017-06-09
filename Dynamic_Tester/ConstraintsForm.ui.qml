@@ -31,7 +31,6 @@ Item {
         }
     }
 
-
     ListView {
         id: shapesView
         anchors.fill: parent

@@ -44,9 +44,9 @@ ApplicationWindow {
             }
         }
 
-        canvas {
-            onPaint: {
-                var ctx = canvas.getContext("2d");
+        designer {
+            canvas.onPaint: {
+                var ctx = designer.canvas.getContext("2d");
                 ctx.reset();
                 ctx.fillStyle = "white";
                 ctx.fillRect(0, 0, width, height);
@@ -60,6 +60,6 @@ ApplicationWindow {
             }
         }
 
-        selection.onPropertiesChanged: canvas.requestPaint()
+        selection.onPropertiesChanged: designer.canvas.requestPaint()
     }
 }

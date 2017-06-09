@@ -3,8 +3,12 @@ import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 
 Item {
+    //element properties
     Layout.minimumWidth: 300
     height: childrenRect.height
+
+    //viewmodel properties
+    property int resolution
     property int r: 0
     property int g: 0
     property int b: 0
@@ -13,16 +17,7 @@ Item {
     property int theta: 0
     property int size: 0
 
-    property alias xSpinBox: xSpinBox
-    property alias ySpinBox: ySpinBox
-    property alias thetaSpinBox: thetaSpinBox
-    property alias sizeSpinBox: sizeSpinBox
-    property alias rSpinBox: rSpinBox
-    property alias rSlider: rSlider
-    property alias gSpinBox: gSpinBox
-    property alias gSlider: gSlider
-    property alias bSpinBox: bSpinBox
-    property alias bSlider: bSlider
+    //view
     GridLayout {
         id: gridLayout
         width: parent.width
@@ -39,10 +34,10 @@ Item {
 
         SpinBox {
             id: xSpinBox
-            to: 25
             editable: true
             value: sx
             onValueChanged: sx = value
+            to: resolution - 1
             Layout.maximumWidth: 300
             Layout.fillWidth: true
         }
@@ -62,6 +57,7 @@ Item {
             editable: true
             value: sy
             onValueChanged: sy = value
+            to: resolution - 1
             Layout.maximumWidth: 300
             Layout.fillWidth: true
         }
@@ -99,6 +95,7 @@ Item {
             editable: true
             value: size
             onValueChanged: size = value
+            to: resolution - 1
             Layout.maximumWidth: 300
             Layout.fillWidth: true
         }

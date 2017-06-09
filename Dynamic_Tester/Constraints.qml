@@ -2,6 +2,7 @@ import QtQuick 2.5
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.1
 import QtQuick.Controls.Material 2.1
+import QtQuick.Controls.Styles 1.3
 Item {
     property alias shapesModel: ctx.shapesModel
     property alias shapesView: ctx.shapesView
@@ -15,17 +16,27 @@ Item {
                     anchors.right: parent.right
                     height: childrenRect.height
                     onClicked: shapesView.currentIndex = index
+                    Material.background: Material.background
+                    Rectangle {
+                        anchors.centerIn: parent
+                        width: parent.width
+                        height: parent.height - 12
+                        border.width: 2
+                        border.color: Material.primary
+                        color: "transparent"
+
+                    }
+
                     Button {
                         id: shapeDelete
                         anchors.top: parent.top
                         anchors.right: parent.right
-                        anchors.topMargin: 10
+                        anchors.topMargin: 5
                         anchors.rightMargin: 5
-                        width: childrenRect.width
-                        height: 20
-                        Text {
-                            text: " X "
-                        }
+                        width: 20
+                        height: 32 //-12 for actual height, blame Qt devs
+                        text: "X"
+                        Material.background: Material.Red
                         MouseArea {
                             onClicked: {
                                 shapesModel.remove(index);

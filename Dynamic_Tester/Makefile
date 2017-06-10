@@ -66,7 +66,7 @@ Makefile: Dynamic_Tester.pro C:/Qt/5.9/mingw53_32/mkspecs/win32-g++/qmake.conf C
 		C:/Qt/5.9/mingw53_32/mkspecs/qdevice.pri \
 		C:/Qt/5.9/mingw53_32/mkspecs/features/device_config.prf \
 		C:/Qt/5.9/mingw53_32/mkspecs/common/g++-base.conf \
-		C:/Qt/5.9/mingw53_32/mkspecs/common/angle.conf \
+		C:/Qt/5.9/mingw53_32/mkspecs/common/windows-gles.conf \
 		C:/Qt/5.9/mingw53_32/mkspecs/common/sanitize.conf \
 		C:/Qt/5.9/mingw53_32/mkspecs/common/gcc-base.conf \
 		C:/Qt/5.9/mingw53_32/mkspecs/qconfig.pri \
@@ -248,7 +248,7 @@ C:/Qt/5.9/mingw53_32/mkspecs/features/spec_pre.prf:
 C:/Qt/5.9/mingw53_32/mkspecs/qdevice.pri:
 C:/Qt/5.9/mingw53_32/mkspecs/features/device_config.prf:
 C:/Qt/5.9/mingw53_32/mkspecs/common/g++-base.conf:
-C:/Qt/5.9/mingw53_32/mkspecs/common/angle.conf:
+C:/Qt/5.9/mingw53_32/mkspecs/common/windows-gles.conf:
 C:/Qt/5.9/mingw53_32/mkspecs/common/sanitize.conf:
 C:/Qt/5.9/mingw53_32/mkspecs/common/gcc-base.conf:
 C:/Qt/5.9/mingw53_32/mkspecs/qconfig.pri:

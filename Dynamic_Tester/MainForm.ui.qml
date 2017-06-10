@@ -10,8 +10,6 @@ Mobile.Page {
     property alias classifyButton: classifyButton
     property alias retrainButton: retrainButton
 
-    property string canvasBackgroundColor
-    property int   canvasResolution
     property alias constraints: constraints
     property alias designer: designer
     property alias selection: selection
@@ -94,6 +92,12 @@ Mobile.Page {
 
         Designer {
             id: designer
+            resolution: 256
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            backgroundColor: "grey"
+            model: constraints.shapesModel
+            delegate: DesignerDelegate {}
         }
 
         Selection {

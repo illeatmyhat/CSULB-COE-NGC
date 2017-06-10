@@ -5,5 +5,8 @@ import QtQuick.Controls.Material 2.1
 
 DesignerForm {
     id: ctx
-    property alias canvas: ctx.canvas
+    property alias resolution: ctx.resolution
+    property alias model: ctx.model
+    property alias delegate: ctx.delegate
+    property alias backgroundColor: ctx.backgroundColor
 }

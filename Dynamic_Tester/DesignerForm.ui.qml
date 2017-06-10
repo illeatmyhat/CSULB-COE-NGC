@@ -4,17 +4,25 @@ import QtQuick.Controls 2.1 as Mobile
 import QtQuick.Controls.Material 2.1
 import QtQuick.Layouts 1.1
 Rectangle {
-    property alias canvas: canvas
+    id:root
+    property int resolution
+    property ListModel model
+    property Component delegate
+    property string backgroundColor
+
     Layout.margins: 1
-    Layout.fillHeight: true
-    Layout.fillWidth: true
-    Layout.minimumHeight: 266
-    Layout.minimumWidth: 266
-    color: canvasBackgroundColor
-    Canvas {
-       id: canvas
-       width: canvasResolution
-       height: canvasResolution
-       anchors.centerIn: parent
+    Layout.minimumHeight: resolution + 1
+    Layout.minimumWidth: resolution + 1
+    color: backgroundColor
+    Rectangle {
+        anchors.centerIn: parent
+        width: resolution
+        height: resolution
+        color: "white"
+        clip: true
+        Repeater {
+            model: root.model
+            delegate: root.delegate
+        }
     }
 }

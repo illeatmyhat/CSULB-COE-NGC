@@ -8,5 +8,6 @@
         <file>Selection.qml</file>
         <file>Constraints.qml</file>
         <file>ConstraintsForm.ui.qml</file>
+        <file>DesignerDelegate.qml</file>
     </qresource>
 </RCC>

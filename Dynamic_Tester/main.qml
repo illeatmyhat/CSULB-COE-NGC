@@ -12,7 +12,7 @@ ApplicationWindow {
         anchors.fill: parent
         exitButton.onClicked: Qt.quit();
         newSquareButton.onClicked: {
-            constraints.shapesModel.append
+            shapesModel.append
             ({
                  shape: "square",
                  r: 255,
@@ -23,20 +23,20 @@ ApplicationWindow {
                  theta: 0,
                  size: 5
             });
-
-            constraints.shapesView.currentIndex = constraints.shapesModel.count - 1;
+            constraints.shapesView.currentIndex = shapesModel.count - 1;
         }
 
         constraints {
             shapesView {
                 onCurrentItemChanged: {
-                    selection.selected = constraints.shapesModel.get(constraints.shapesView.currentIndex);
+                    selection.selected = shapesModel.get(constraints.shapesView.currentIndex);
                 }
             }
-            shapesModel {
-                onCountChanged: {
-                    selection.visible = constraints.shapesModel.count != 0;
-                }
+        }
+        shapesModel {
+
+            onCountChanged: {
+                selection.visible = shapesModel.count != 0;
             }
         }
     }

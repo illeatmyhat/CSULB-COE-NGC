@@ -9,7 +9,7 @@ Mobile.Page {
     property alias newSquareButton: newSquareButton
     property alias classifyButton: classifyButton
     property alias retrainButton: retrainButton
-
+    property alias shapesModel: shapesModel
     property alias constraints: constraints
     property alias designer: designer
     property alias selection: selection
@@ -18,7 +18,7 @@ Mobile.Page {
     Layout.minimumWidth: 850
 
     header: Mobile.ToolBar {
-        GridLayout{
+        GridLayout {
             anchors.fill: parent
             columns: 5
             Mobile.ToolButton {
@@ -45,36 +45,34 @@ Mobile.Page {
                 text: qsTr("Retrain")
             }
         }
-
-
     }
     footer: Rectangle {
         height: childrenRect.height
         color: Material.primary
         GridLayout {
-                id: grid
-                width: parent.width
-                Text {
-                    id: statusLabel
-                    text: qsTr("Reclassifying Image...")
-                    color: "white"
-                }
+            id: grid
+            width: parent.width
+            Text {
+                id: statusLabel
+                text: qsTr("Reclassifying Image...")
+                color: "white"
+            }
 
-                Item {
-                    Layout.fillWidth: true
-                }
+            Item {
+                Layout.fillWidth: true
+            }
 
-                Text {
-                    text: qsTr("Most Recent Classification:")
-                    color: "white"
-                }
+            Text {
+                text: qsTr("Most Recent Classification:")
+                color: "white"
+            }
 
-                Text {
-                    id: classificationLabel
-                    text: qsTr("Positive")
-                    Layout.minimumWidth: 50
-                    color: "white"
-                }
+            Text {
+                id: classificationLabel
+                text: qsTr("Positive")
+                Layout.minimumWidth: 50
+                color: "white"
+            }
         }
     }
 
@@ -88,6 +86,9 @@ Mobile.Page {
             id: constraints
             Layout.minimumWidth: 200
             Layout.margins: 10
+            shapesView {
+                model: shapesModel
+            }
         }
 
         Designer {
@@ -96,10 +97,33 @@ Mobile.Page {
             Layout.fillHeight: true
             Layout.fillWidth: true
             backgroundColor: "grey"
-            model: constraints.shapesModel
-            delegate: DesignerDelegate {}
+            model: shapesModel
+            delegate: DesignerDelegate {
+            }
         }
-
+        ListModel {
+            id: shapesModel
+            ListElement {
+                shape: "square"
+                r: 255
+                g: 0
+                b: 0
+                sx: 50
+                sy: 50
+                theta: 0
+                size: 5
+            }
+            ListElement {
+                shape: "square"
+                r: 128
+                g: 128
+                b: 128
+                sx: 230
+                sy: 230
+                theta: 0
+                size: 5
+            }
+        }
         Selection {
             id: selection
             Layout.margins: 10
